@@ -1,6 +1,7 @@
 {% extends 'partials/base.html' %}
-{% block content %}
 
+{% block content %}
+<div class = container>
 <form method='post' enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
@@ -8,5 +9,5 @@
     <button type="submit">Save</button>
 
 </form>
-
+</div>
 {% endblock %}

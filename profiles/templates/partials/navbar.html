@@ -1,36 +1,57 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Poké_Ball_icon.svg/1026px-Poké_Ball_icon.svg.png" alt="" width="50" height="50">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav ">
+        <li class="nav-item {% block nav_home%}{% endblock %}">
+          <a class="nav-link" aria-current="page" href="{% url 'homepage' %}">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+        <li class="nav-item {% block nav_cardsav%}{% endblock %}">
+          <a class="nav-link" href="{% url 'open_sales' %}">Cards Avaliable to Trade</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+        <li  class ="{% block nav_forum%}{% endblock %}">
+          <a class="nav-link" href="{% url 'all' %}">Forum</a>
+        </li>
+        
+        {% if user.is_authenticated %}
+        <li class="nav-item dropdown {% block nav_cards%}{% endblock %}">
+          <a class="nav-link active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Cards
+          </a>
+          <ul class="dropdown-menu ml-auto" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="{% url 'my_deck' %}">My Deck</a></li>
+            <li><a class="dropdown-item" href="{% url 'new_sale' %}">New Sale</a></li>
+            <li><a class="dropdown-item" href="{% url 'my_open_sales' %}">Open Sales</a></li>
+            <li><a class="dropdown-item" href="{% url 'my_offers' %}">Open Offers</a></li>
+          </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Username
+          <a class="nav-link {% block nav_user%}{% endblock %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-circle"></i>
 
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
             {% if user.is_authenticated %}
             <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
-            <li><a class="dropdown-item" href="{% url 'profile' user.id %}">Profile</a></li>
+            <li><a class="dropdown-item" href="{% url 'profile_update' user.profile.id %}">Profile</a></li>
+            <li><a class="dropdown-item" href="{% url 'my_deck' %}">My Deck</a></li>
+
             {% else %}
             <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+            <li><a class="dropdown-item" href="{% url 'signup' %}">Signup</a></li>
             {% endif %}
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
-      </ul>
+        {% endif %}
+
+          
     </div>
+    
   </div>
+  
 </nav>

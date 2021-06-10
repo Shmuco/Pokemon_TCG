@@ -1,25 +1,24 @@
+
 {% extends 'partials/base.html' %}
 
 {% block content %}
-
-
 <h1>All Posts</h1>
-
 
   <a class="btn btn-primary" href="{% url 'new_post' %}" role="button">New Post</a>
   <br>
-{% for p in posts%}
+{% for s in sales%}
 <div class="card">
   <div class="card-body">
     <blockquote class="blockquote mb-0">
-      <a href="{% url 'single_post' p.id %}" >
-      <p>{{p.title}}</p>
+      <p>{{s.card}}</p>
       </a>
-        <footer class="blockquote-footer"><cite title="Source Title">{{p.creator}}</cite></footer>
+        <footer class="blockquote-footer"><cite title="Source Title">{{s.seller}}</cite></footer>
       </blockquote>
     </div>
     <div class="card-header">
-      {{ p.created_at }}
+      {{ s.sale_opened }}
+      <a class="btn btn-primary" href="{% url 'view_offers' s.id %}" role="button">View Offers</a>
+      <a class="btn btn-danger" href="{% url 'delete_sale' s.id %}" role="button">Delete</a>
     </div>
   
   <br>

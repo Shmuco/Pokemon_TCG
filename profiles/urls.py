@@ -9,6 +9,6 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
     path('signup/', views.signup, name='signup'),
     path('<int:user_id>', views.profile, name='profile'),
-    # path('update/<slug:pk>', views.UpdateProfile.as_view(), name='profile_update'),
+    path('<pk>/update', views.UpdateProfile.as_view(), name='profile_update'),
     
 ]
