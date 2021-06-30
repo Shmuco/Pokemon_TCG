@@ -1,7 +1,125 @@
-.navbar{
+.navbar {
     background-color: #3B4CCA;
 }
 
-body{
-    background-color:blueviolet
+body {
+    background-color: #FFDE00;
+}
+
+.submit {
+    background-color: #CC0000
+}
+
+.title{
+    color:  #FFDE00;
+    text-shadow: 0 0 10px black;
+    font-family: 'Pokemon Solid', sans-serif;
+    -webkit-text-stroke-width: 5px;
+    -webkit-text-stroke-color: #3B4CCA
+    ;
+
+}
+
+
+.vertical-center, .jumbotron{
+
+    margin-top: 5%;
+    padding: 3%;
+    text-align: center;
+
+    background-color: #3B4CCA;
+    border-style: solid;
+    border-radius: 20px;
+    border-width: 10px;
+    border-color: #FFDE00;
+}
+
+.card {
+
+    margin-top: 5%;
+    justify-content: center;
+
+
+
+    background-color: #3B4CCA;
+    border-style: solid;
+    border-radius: 20px;
+    border-width: 5px;
+    border-color: #CC0000;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+
+label,p {
+    color: white;
+    text-shadow: 0 0 10px black, 0 0 10px black, 0 0 10px black;
+    font-family: 'Pokemon Solid', sans-serif;
+    letter-spacing: 2px;
+
+}
+
+.submit {
+    color: white;
+    text-shadow: 0 0 10px black;
+    font-family: 'Pokemon Solid', sans-serif;
+
+
+}
+
+.post-by {
+    color: white;
+    text-shadow: 0 0 10px black;
+    font-family: 'Pokemon Solid', sans-serif;
+    font-size: 12px;
+}
+
+.text-muted{
+    color: white
+}
+
+.pokecard{
+    width:300px;
+    height: 500px;
+    padding: 3%;
+    justify-content: center;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+    
+}
+
+.card-title{
+    color:  #FFDE00;
+    text-shadow: 0 0 10px black,0 0 10px black;
+    font-family: 'Pokemon Solid', sans-serif;
+    font-size: 25px;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #3B4CCA
+    ;
+}
+
+.card-img-bottom{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    padding: 0;
+}
+
+.flex-container{
+    display: flex;
+    flex-flow: row wrap;
+    
+    justify-content: center;
+
+
+}
+
+.forum{
+   background-color: #FFDE00;
+}
+
+.footer{
+    text-align: center;
+    background-color: green
 }

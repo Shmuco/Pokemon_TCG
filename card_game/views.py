@@ -14,7 +14,9 @@ def homepage(request):
     return render(request, 'homepage.html')
 
 def open_sales(request):
-    sales = OpenSale.objects.filter(status = True).exclude(seller = request.user)
+    sales = OpenSale.objects.filter(status = True)
+    if request.user.is_authenticated:
+        sales = sales.exclude(seller = request.user)
 
     return render(request, 'open_sales.html', {'sales': sales})
 
@@ -60,7 +62,7 @@ def my_deck(request):
     # print(deck.cards)
     cards = deck.cards.all()
     print(cards)
-    return render(request, 'test_page.html', {'cards': cards})
+    return render(request, 'my_deck.html', {'cards': cards})
 
 def offer_accepted(request, o_id):
     offer = PendingOffers.objects.get(id= o_id)

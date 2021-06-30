@@ -1,13 +1,17 @@
 {% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+
 
 {% block content %}
-<div class = container>
-<form method='post' enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-
-    <button type="submit">Save</button>
-
+<div class = 'container vertical-center' >
+   
+    <form method='post' enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        
+        <button type="submit" class="btn submit btn-lg btn-block">Block level button</button>
+        
 </form>
+
 </div>
 {% endblock %}

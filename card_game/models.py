@@ -20,7 +20,7 @@ class Card(models.Model):
     image = models.URLField(default = 'https://bit.ly/3g48hBf')
 
     def __str__(self):
-        return self.name
+        return self.name.title()
 
    
 class Deck(models.Model):

@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand " href="#"><img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Poké_Ball_icon.svg/1026px-Poké_Ball_icon.svg.png"
+        alt="" width="50" height="50"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+      <ul class="navbar-nav d-lg-flex align-items-center ">
+        {% with url_name=request.resolver_match.url_name %}
+        <li class="nav-item {% if url_name == 'homepage' %}active{% endif %} ">
+          <a class="nav-link" href="{% url 'homepage' %}">Home<span class="sr-only">(current)</span></a>
+        
+        </li>
+        <li class="nav-item {% if url_name == 'open_sales' %}active{% endif %}">
+          <a class="nav-link " href="{% url 'open_sales' %}">Cards Avaliable to Trade</a>
+        </li>
+        <li class="nav-item {% if url_name == 'all' %}active{% endif %}">
+          <a class="nav-link " href="{% url 'all' %}">Forum</a>
+        </li>
+        {% if user.is_authenticated %}
+
+        <li class="nav-item dropdown {% if url_name == 'my_deck' %}active{% endif %} {% if url_name == 'new_sale' %}active{% endif %}{% if url_name == 'my_open_sales' %}active{% endif %}{% if url_name == 'my_offers' %}active{% endif %}">
+          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Cards
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'my_deck' %}">My Deck</a>
+            <a class="dropdown-item" href="{% url 'new_sale' %}">New Sale</a>
+            <a class="dropdown-item" href="{% url 'my_open_sales' %}">Open Sales</a>
+            <a class="dropdown-item" href="{% url 'my_offers' %}">Open Offers</a>
+          </div>
+        </li>
+        
+        <li class="nav-item dropdown {% if url_name == 'profile_update' %}active{% endif %}{% if url_name == 'my_deck' %}active{% endif %}">
+          <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-circle fa-2x"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+            <a class="dropdown-item" href="{% url 'profile_update' user.profile.id %}">Profile</a>
+          </div>
+        </li>
+
+
+        {% else %}
+        
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Login<span class="sr-only"></a>
+          </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'signup' %}">SignUp<span class="sr-only">(current)</span></a>
+          </li>
+         
+
+        {% endif %}
+        {% endwith %}
+
+        
+        
+
+
+
+
+      </ul>
+      
+    </div>
+  </nav>

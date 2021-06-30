@@ -11,15 +11,13 @@
 {% for p in posts%}
 <div class="card">
   <div class="card-body">
-    <blockquote class="blockquote mb-0">
       <a href="{% url 'single_post' p.id %}" >
       <p>{{p.title}}</p>
       </a>
-        <footer class="blockquote-footer"><cite title="Source Title">{{p.creator}}</cite></footer>
-      </blockquote>
+      <p class = 'post-by'>{{p.content}}</p>  
+      <footer class = 'post-by'>Post by: {{p.creator|title}} - {{ p.created_at }}</footer>
+      
     </div>
-    <div class="card-header">
-      {{ p.created_at }}
     </div>
   
   <br>

@@ -1,24 +1,30 @@
 {% extends 'partials/base.html' %}
 
 {% block content %}
-<div class='container-fluid'>
-    <div class="row">
-
-        {% for c in cards %}
 
 
-        <div class="card text-center col-sm-4 m-2" style="width: 18rem;">
-            <img src="{{c.image}}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{c.name|title}}</h5>
-              <a href="{% url 'new_sale' %}" class="btn btn-primary">Sell Card</a>
-            </div>
-          </div>
+<div class='flex-container'>
+  {% for c in cards %}
 
-      
 
-    {% endfor %}
-    </div>
+
+  <div class='pokecard card'>
+    
+      <p class = card-title>{{c.name|title}}</p>
+    
+
+    
+      <div>
+        <img class="card-img-bottom" src="{{c.image}}" alt="Card image cap">
+      </div>
+      <br> 
+      <a href="{% url 'new_sale' %}" class="btn submit btn-lg btn-block">Sell Card</a>
+  
+  </div>
+
+
+
+{% endfor %}
 
 </div>
 {% endblock %}

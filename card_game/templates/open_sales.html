@@ -1,25 +1,32 @@
+
+
 {% extends 'partials/base.html' %}
 
 {% block content %}
-<h1>All Posts</h1>
 
-  <a class="btn btn-primary" href="{% url 'new_post' %}" role="button">New Post</a>
-  <br>
-{% for s in sales %}
-<div class="card">
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      <p>{{s.card}}</p>
-      </a>
-        <footer class="blockquote-footer"><cite title="Source Title">{{s.seller}}</cite></footer>
-      </blockquote>
-    </div>
-    <div class="card-header">
-      {{ s.sale_opened }}
-      <a class="btn btn-primary" href="{% url 'new_offer' s.id %}" role="button">Make Offers</a>
-    </div>
+
+<div class='flex-container'>
+  {% for s in sales %}
+
+
+
+  <div class='pokecard card'>
+    
+      <p class = card-title>{{s.card|title}}</p>
+    
+
+    
+      <div>
+        <img class="card-img-bottom" src="{{s.card.image}}" alt="Card image cap">
+      </div>
+      <br> 
+      <a href="{% url 'new_offer' s.id %}" class="btn submit btn-lg btn-block">Make Offer</a>
   
-  <br>
-   {% endfor %}
-   {% endblock %}
+  </div>
 
+
+
+{% endfor %}
+
+</div>
+{% endblock %}

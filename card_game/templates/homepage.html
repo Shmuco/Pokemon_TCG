@@ -1,19 +1,18 @@
 {% extends 'partials/base.html' %}
 
 {% block content %}
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4">Fluid jumbotron</h1>
-      <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-    </div>
-  </div>
 
-<div class="jumbotron">
-    <h1 class="display-4">Welcome to the Pokemon trading card game!</h1>
+
+
+
+<div class="jumbotron bg-transparent">
+    <h1 class="display-4 title">Pokémon trading card game.</h1>
+    <br>
     <p class="lead">The best online pokemon trading platform.</p>
     <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    <p>Sign up now and recive your first 20 cards free!!</p>
+    <a class="btn submit btn-lg btn-block" href="{% url 'signup' %}" role="button">Sign Up</a>
+
   </div>
 
 {% endblock %}

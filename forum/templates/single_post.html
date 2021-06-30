@@ -1,50 +1,52 @@
 {% extends 'partials/base.html' %} {% block content %}
+{% load crispy_forms_tags %}
 
-<h1>All Posts</h1>
-<div class="container"> 
-<div class="card">
-  <div class="card-header">
-    {{ post.created_at }} {% if request.user == post.creator %}
-    <form action="{% url 'delete_post' post.id%}" method="post">
-      {% csrf_token %}
-      <button type="submit" name="Delete">Delete</button>
-    </form>
-    {% endif %}
-  </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      <p>{{post.title}}</p>
-      <footer class="blockquote-footer">
-        <cite title="Source Title">{{post.creator}}</cite>
-      </footer>
-    </blockquote>
-  </div>
-</div>
-<br />
 
-{% for c in comments %}
-<div class="card">
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      <p>{{c.Comment}}</p>
-      <footer class="blockquote-footer">
-        {{c.created_at}} <cite title="Source Title">{{c.creator}}</cite>
-      </footer>
-    </blockquote>
-  </div>
-</div>
-{% if request.user == c.creator %}
-<form action="{% url 'delete_comment' c.id%}" method="post">
-  {% csrf_token %}
-  <button type="submit" name="Delete">Delete</button>
-</form>
-{% endif %} {% endfor %}
 <div class="container">
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %} {{ form.as_p }}
+  <div class="card">
+  
+      {% if request.user == post.creator %}
+      <form action="{% url 'delete_post' post.id%}" method="post">
+        {% csrf_token %}
+        <button type="submit" class='btn submit btn-lg ' name="Delete">Delete</button>
+      </form>
+      {% endif %}
+   
+    <div class="card-body">
+      <p>{{post.title}}</p>
+      <p class='post-by'>{{post.content}}</p>
+      <footer class = 'post-by'>Post by: {{post.creator|title}} - {{ post.created_at }}</footer>
 
-    <button type="submit" name="comment">Save</button>
+
+
+    </div>
+  </div>
+  <br />
+
+  {% for c in comments %}
+  <div class="card">
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>{{c.Comment}}</p>
+        <footer class="blockquote-footer">
+          {{c.created_at}} <cite title="Source Title">{{c.creator}}</cite>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+  {% if request.user == c.creator %}
+  <form action="{% url 'delete_comment' c.id%}" method="post">
+    {% csrf_token %}
+    <button type="submit" name="Delete">Delete</button>
   </form>
-</div>
+  {% endif %} {% endfor %}
+  <div class="container vertical-center forum">
+    <br>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %} {{ form|crispy }}
+
+      <button type="submit" name="comment" class="btn submit btn-lg btn-block">Save</button>
+    </form>
+  </div>
 </div>
 {% endblock %}
